@@ -118,23 +118,7 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  26  => XXVI
  */
 function convertToRomanNumerals(num) {
-  let finalString = '';
-  const numbers = String(num);
-  for (let i = 0; i < numbers.length; i += 1) {
-    switch(numbers[i]){
-      case 1:
-        finalString+= "I"
-        break
-      case 2 :
-        finalString +="II"
-        break
-      case 3 :
-        finalString += "III"  
-        break
-      c  
-    }
-  }
-  return finalString;
+  return num;
 }
 
 /**
@@ -187,7 +171,7 @@ function convertNumberToString(numberStr) {
  *  'qweqwe'    => false
  */
 function isPalindrome(str) {
-  throw new Error('Not implemented');
+  return str;
 }
 
 /**

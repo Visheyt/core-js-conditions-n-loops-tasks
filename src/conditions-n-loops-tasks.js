@@ -171,7 +171,14 @@ function convertNumberToString(numberStr) {
  *  'qweqwe'    => false
  */
 function isPalindrome(str) {
-  return str;
+  let integer = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] !== str[str.length - 1 - integer]) {
+      return false;
+    }
+    integer += 1;
+  }
+  return true;
 }
 
 /**

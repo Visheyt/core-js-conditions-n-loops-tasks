@@ -222,15 +222,14 @@ function getIndexOf(str, letter) {
  */
 function isContainNumber(num, digit) {
   let number = num;
-  let result = false;
   while (number > 0) {
     const check = number % 10;
     if (check === digit) {
-      result = true;
+      return true;
     }
-    number /= 10;
+    number = Math.floor(number / 10);
   }
-  return result;
+  return false;
 }
 
 /**

@@ -137,7 +137,31 @@ function isIsoscelesTriangle(a, b, c) {
  *  26  => XXVI
  */
 function convertToRomanNumerals(num) {
-  return num;
+  const romanianObj = {
+    0: '',
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI',
+    7: 'VII',
+    8: 'VIII',
+    9: 'IX',
+    10: 'X',
+  };
+  if (num < 10) {
+    return romanianObj[num];
+  }
+  if (num > 9 && num < 20) {
+    return `${romanianObj[10]}${romanianObj[num % 10]}`;
+  }
+  if (num > 19 && num < 30) {
+    return `${romanianObj[10]}${romanianObj[10]}${romanianObj[num % 10]}`;
+  }
+  return `${romanianObj[10]}${romanianObj[10]}${romanianObj[10]}${
+    romanianObj[num % 10]
+  }`;
 }
 
 /**
@@ -164,15 +188,23 @@ function convertNumberToString(numberStr) {
     4: 'four',
     5: 'five',
     6: 'six',
-    7: 'eight',
-    8: 'nine',
+    7: 'seven',
+    8: 'eight',
     9: 'nine',
     '-': 'minus',
     '.': 'point',
+    ',': 'point',
   };
   let finalStr = '';
   for (let i = 0; i < numberStr.length; i += 1) {
-    finalStr += `${obj[numberStr]} `;
+    switch (finalStr.length) {
+      case 0:
+        finalStr += `${obj[numberStr[i]]}`;
+        break;
+      default:
+        finalStr += ` ${obj[numberStr[i]]}`;
+        break;
+    }
   }
   return finalStr;
 }
@@ -352,8 +384,18 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let finalStr = '';
+  let endStr = '';
+  for (let i = 0; i < str.length; i += iterations) {
+    if (i % 2 !== 0) {
+      endStr += str[i];
+    } else {
+      finalStr += str[i];
+    }
+  }
+  finalStr += endStr;
+  return finalStr;
 }
 
 /**

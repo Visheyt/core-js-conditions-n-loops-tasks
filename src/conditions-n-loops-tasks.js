@@ -396,7 +396,7 @@ function rotateMatrix(matrix) {
 function sortByAsc(arr) {
   const newArr = arr;
   for (let i = 0; i < newArr.length; i += 1) {
-    const currentItem = arr[i];
+    const currentItem = newArr[i];
     let index = i;
     while (index !== 0 && newArr[index - 1] > currentItem) {
       newArr[index] = newArr[index - 1];

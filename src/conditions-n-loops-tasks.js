@@ -393,19 +393,19 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(arr) {
-  const newArr = arr;
-  for (let i = 0; i < newArr.length; i += 1) {
-    const currentItem = newArr[i];
-    let index = i;
-    while (index !== 0 && newArr[index - 1] > currentItem) {
-      newArr[index] = newArr[index - 1];
-      index -= 1;
-    }
-    newArr[index] = currentItem;
-  }
-  return newArr;
-}
+// function sortByAsc(arr) {
+//   const newArr = arr;
+//   for (let i = 0; i < newArr.length; i += 1) {
+//     const currentItem = newArr[i];
+//     let index = i;
+//     while (index !== 0 && newArr[index - 1] > currentItem) {
+//       newArr[index] = newArr[index - 1];
+//       index -= 1;
+//     }
+//     newArr[index] = currentItem;
+//   }
+//   return newArr;
+// }
 
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
@@ -501,7 +501,7 @@ module.exports = {
   getBalanceIndex,
   getSpiralMatrix,
   rotateMatrix,
-  sortByAsc,
+  // sortByAsc,
   shuffleChar,
   getNearestBigger,
 };

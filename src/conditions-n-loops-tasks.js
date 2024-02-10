@@ -426,6 +426,7 @@ function sortByAsc(arr) {
  */
 function shuffleChar(str, iterations) {
   const number = iterations;
+  let counter = 0;
   let newString = str;
   let evenStr = '';
   let oddStr = '';
@@ -437,6 +438,10 @@ function shuffleChar(str, iterations) {
     newString = evenStr + oddStr;
     evenStr = '';
     oddStr = '';
+    counter += 1;
+    if (newString === str) {
+      return shuffleChar(newString, iterations % counter);
+    }
   }
   return newString;
 }

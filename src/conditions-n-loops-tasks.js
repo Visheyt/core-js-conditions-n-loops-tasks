@@ -300,17 +300,18 @@ function getBalanceIndex(arr) {
   if (!arr.length) {
     return -1;
   }
-  const middleLength = Math.floor(arr.length / 2);
-  let leftSum = 0;
-  let rightSum = 0;
-  for (let i = 0; i < middleLength; i += 1) {
-    leftSum += arr[i];
-  }
-  for (let i = arr.length - 1; i > middleLength; i -= 1) {
-    rightSum += arr[i];
-  }
-  if (leftSum === rightSum) {
-    return middleLength;
+  for (let i = 0; i < arr.length; i += 1) {
+    let leftSum = 0;
+    let rightSum = 0;
+    for (let j = 0; j < i; j += 1) {
+      leftSum += arr[j];
+    }
+    for (let q = arr.length - 1; q > i; q -= 1) {
+      rightSum += arr[q];
+    }
+    if (leftSum === rightSum) {
+      return i;
+    }
   }
   return -1;
 }
@@ -338,10 +339,68 @@ function getBalanceIndex(arr) {
  */
 function getSpiralMatrix(size) {
   const arr = [];
-  for (let i = 0; i <= size; i += 1) {
+  let copySize = size;
+  let number = 1;
+  while (copySize > 0) {
     const array = [];
-    array.push(i);
+    for (let i = 0; i < size; i += 1) {
+      array.push(0);
+    }
+    arr.push(array);
+    copySize -= 1;
   }
+  for (let i = 0; i <= size; i += 1) {
+    if (i === 0) {
+      for (let j = 0; j < arr.length; j += 1) {
+        arr[i][j] = number;
+        number += 1;
+      }
+    }
+    if (i === 1) {
+      const index = arr.length - 1;
+      for (let j = 1; j < arr.length; j += 1) {
+        arr[j][index] = number;
+        number += 1;
+      }
+    }
+    if (i === 2) {
+      const index = arr.length - 1;
+      for (let j = index - 1; j >= 0; j -= 1) {
+        arr[index][j] = number;
+        number += 1;
+      }
+    }
+    if (i === 3) {
+      const index = arr.length - 2;
+      for (let j = index; j >= 1; j -= 1) {
+        arr[j][0] = number;
+        number += 1;
+      }
+    }
+  }
+  for (let i = 1; i < size; i += 1) {
+    if (i === 1) {
+      for (let j = 1; j < arr.length - 1; j += 1) {
+        arr[i][j] = number;
+        number += 1;
+      }
+    }
+    if (i === 2) {
+      const index = arr.length - 2;
+      for (let j = 2; j < arr.length - 1; j += 1) {
+        arr[j][index] = number;
+        number += 1;
+      }
+    }
+    if (i === 2) {
+      const index = arr.length - 2;
+      for (let j = index - 1; j >= 1; j -= 1) {
+        arr[index][j] = number;
+        number += 1;
+      }
+    }
+  }
+
   return arr;
 }
 

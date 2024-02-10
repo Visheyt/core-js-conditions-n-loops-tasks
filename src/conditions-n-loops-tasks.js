@@ -393,19 +393,19 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-// function sortByAsc(arr) {
-//   const newArr = arr;
-//   for (let i = 0; i < newArr.length; i += 1) {
-//     const currentItem = newArr[i];
-//     let index = i;
-//     while (index !== 0 && newArr[index - 1] > currentItem) {
-//       newArr[index] = newArr[index - 1];
-//       index -= 1;
-//     }
-//     newArr[index] = currentItem;
-//   }
-//   return newArr;
-// }
+function sortByAsc(arr) {
+  const newArr = arr;
+  for (let i = 0; i < newArr.length; i += 1) {
+    const currentItem = newArr[i];
+    let index = i;
+    while (index !== 0 && newArr[index - 1] > currentItem) {
+      newArr[index] = newArr[index - 1];
+      index -= 1;
+    }
+    newArr[index] = currentItem;
+  }
+  return newArr;
+}
 
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
@@ -481,7 +481,13 @@ function getNearestBigger(number) {
       break;
     }
   }
-  const temp = arr.findLastIndex((e) => e === big);
+  let temp;
+  for (let i = arr.length; i > 0; i -= 1) {
+    if (big === arr[i]) {
+      temp = i;
+      break;
+    }
+  }
   arr[numI] = big;
   arr[temp] = num;
   const chunk = arr.splice(numI + 1).sort((a, b) => a - b);
@@ -501,7 +507,7 @@ module.exports = {
   getBalanceIndex,
   getSpiralMatrix,
   rotateMatrix,
-  // sortByAsc,
+  sortByAsc,
   shuffleChar,
   getNearestBigger,
 };
